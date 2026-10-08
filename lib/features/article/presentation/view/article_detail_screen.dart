@@ -5,6 +5,7 @@ import '../../../../../l10n/app_localizations.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../domain/i_article_repository.dart';
 import '../bloc/detail/article_detail_cubit.dart';
+import '../utils/article_format_ext.dart';
 
 class ArticleDetailScreen extends StatelessWidget {
   final String id;
@@ -60,7 +61,7 @@ class _ArticleDetailView extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  l10n.published(article.publishedDate),
+                  l10n.published(article.formattedPublishedDate),
                   style: Theme.of(context).textTheme.titleSmall,
                 ),
                 const SizedBox(height: 16),
