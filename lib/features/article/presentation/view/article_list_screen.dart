@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 import '../../../../../l10n/app_localizations.dart';
 import '../bloc/list/article_list_cubit.dart';
 import '../../../../common/settings/settings_cubit.dart';
-import '../../../../common/theme/image_sources.dart';
 
 class ArticleListScreen extends StatefulWidget {
   const ArticleListScreen({super.key});
