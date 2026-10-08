@@ -5,7 +5,10 @@
     "searchPrompt": "Enter search query",
     "nothingFound": "Nothing found",
     "articles": "Articles",
-    "openJournal": "Open Journal",
+    "articleDetails": "Article details",
+    "openJournal": "Open journal",
+    "openRelatedArticle": "Open related article",
+    "errorMessage": "An error occurred",
     "authors": "Authors: {authors}",
     "@authors": {
         "placeholders": {

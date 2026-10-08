@@ -79,7 +79,7 @@ class _ArticleListScreenState extends State<ArticleListScreen> {
                 } else if (state.status == ArticleListStatus.notFound) {
                   return Center(child: Text(l10n.nothingFound));
                 } else if (state.status == ArticleListStatus.error) {
-                  return const Center(child: Text('Error'));
+                  return Center(child: Text(l10n.errorMessage));
                 } else if (state.status == ArticleListStatus.loaded) {
                   return ListView.builder(
                     itemCount: state.items.length,

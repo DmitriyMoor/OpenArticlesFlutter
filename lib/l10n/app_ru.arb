@@ -5,7 +5,10 @@
     "searchPrompt": "Введите поисковый запрос",
     "nothingFound": "Ничего не найдено",
     "articles": "Статьи",
+    "articleDetails": "Детали статьи",
     "openJournal": "Открыть журнал",
+    "openRelatedArticle": "Открыть связанную статью",
+    "errorMessage": "Произошла ошибка",
     "authors": "Авторы: {authors}",
     "@authors": {
         "placeholders": {

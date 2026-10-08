@@ -32,7 +32,7 @@ class _ArticleDetailView extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
-        title: Text(l10n.articles),
+        title: Text(l10n.articleDetails),
       ),
       body: BlocBuilder<ArticleDetailCubit, ArticleDetailState>(
         builder: (context, state) {
@@ -41,7 +41,7 @@ class _ArticleDetailView extends StatelessWidget {
           } else if (state.status == ArticleDetailStatus.notFound) {
             return Center(child: Text(l10n.nothingFound));
           } else if (state.status == ArticleDetailStatus.error) {
-            return const Center(child: Text('Error'));
+            return Center(child: Text(l10n.errorMessage));
           }
 
           final article = state.article!;
@@ -86,7 +86,7 @@ class _ArticleDetailView extends StatelessWidget {
                     // Just open another random article to demonstrate the related record feature
                     context.push('/article/id_1');
                   },
-                  child: const Text('Open Related Article'),
+                  child: Text(l10n.openRelatedArticle),
                 ),
               ],
             ),

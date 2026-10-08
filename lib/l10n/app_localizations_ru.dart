@@ -25,7 +25,16 @@ class AppLocalizationsRu extends AppLocalizations {
   String get articles => 'Статьи';
 
   @override
+  String get articleDetails => 'Детали статьи';
+
+  @override
   String get openJournal => 'Открыть журнал';
+
+  @override
+  String get openRelatedArticle => 'Открыть связанную статью';
+
+  @override
+  String get errorMessage => 'Произошла ошибка';
 
   @override
   String authors(String authors) {

@@ -25,7 +25,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get articles => 'Articles';
 
   @override
-  String get openJournal => 'Open Journal';
+  String get articleDetails => 'Article details';
+
+  @override
+  String get openJournal => 'Open journal';
+
+  @override
+  String get openRelatedArticle => 'Open related article';
+
+  @override
+  String get errorMessage => 'An error occurred';
 
   @override
   String authors(String authors) {

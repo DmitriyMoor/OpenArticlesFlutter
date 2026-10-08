@@ -128,11 +128,29 @@ abstract class AppLocalizations {
   /// **'Статьи'**
   String get articles;
 
+  /// No description provided for @articleDetails.
+  ///
+  /// In ru, this message translates to:
+  /// **'Детали статьи'**
+  String get articleDetails;
+
   /// No description provided for @openJournal.
   ///
   /// In ru, this message translates to:
   /// **'Открыть журнал'**
   String get openJournal;
+
+  /// No description provided for @openRelatedArticle.
+  ///
+  /// In ru, this message translates to:
+  /// **'Открыть связанную статью'**
+  String get openRelatedArticle;
+
+  /// No description provided for @errorMessage.
+  ///
+  /// In ru, this message translates to:
+  /// **'Произошла ошибка'**
+  String get errorMessage;
 
   /// No description provided for @authors.
   ///
