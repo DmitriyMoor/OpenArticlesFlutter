@@ -1,0 +1,33 @@
+{
+    "@@locale": "ru",
+    "appTitle": "Открытые статьи",
+    "search": "Поиск статей...",
+    "searchPrompt": "Введите поисковый запрос",
+    "nothingFound": "Ничего не найдено",
+    "articles": "Статьи",
+    "openJournal": "Открыть журнал",
+    "authors": "Авторы: {authors}",
+    "@authors": {
+        "placeholders": {
+            "authors": {
+                "type": "String"
+            }
+        }
+    },
+    "published": "Опубликовано: {date}",
+    "@published": {
+        "placeholders": {
+            "date": {
+                "type": "String"
+            }
+        }
+    },
+    "journal": "Журнал: {name}",
+    "@journal": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    }
+}

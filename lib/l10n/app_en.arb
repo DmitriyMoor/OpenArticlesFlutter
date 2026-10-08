@@ -1,0 +1,33 @@
+{
+    "@@locale": "en",
+    "appTitle": "Open Articles",
+    "search": "Search articles...",
+    "searchPrompt": "Enter search query",
+    "nothingFound": "Nothing found",
+    "articles": "Articles",
+    "openJournal": "Open Journal",
+    "authors": "Authors: {authors}",
+    "@authors": {
+        "placeholders": {
+            "authors": {
+                "type": "String"
+            }
+        }
+    },
+    "published": "Published: {date}",
+    "@published": {
+        "placeholders": {
+            "date": {
+                "type": "String"
+            }
+        }
+    },
+    "journal": "Journal: {name}",
+    "@journal": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    }
+}
