@@ -1,37 +1,73 @@
-import 'package:open_articles_flutter/features/article/data/mock_articles.dart';
+import 'package:open_articles_flutter/features/article/data/data_sources/i_article_data_source.dart';
+import 'package:open_articles_flutter/features/article/data/mappers/article_mapper.dart';
 import 'package:open_articles_flutter/features/article/domain/article_model.dart';
+import 'package:open_articles_flutter/features/article/domain/article_page.dart';
 import 'package:open_articles_flutter/features/article/domain/i_article_repository.dart';
 
 class ArticleRepository implements IArticleRepository {
-  static const Duration _delay = Duration(milliseconds: 400);
-  static const int _relatedLimit = 5;
+  ArticleRepository(this._dataSource);
+
+  final IArticleDataSource _dataSource;
+
+  static const int _pageSize = 20;
+  static const int _relatedLimit = 6;
+
+  static const int _maxResults = 1000;
+
+  static const String _defaultQuery =
+      'bibjson.subject.term:"Electronic computers. Computer science"';
 
   @override
-  Future<List<ArticleModel>> getArticles({String query = ''}) async {
-    await Future.delayed(_delay);
-    final text = query.trim().toLowerCase();
-    if (text.isEmpty) return mockArticles;
-    return mockArticles.where((article) => _matches(article, text)).toList();
+  Future<ArticlePage> getArticles({String query = '', int page = 1}) async {
+    final text = _clean(query);
+    final dto = await _dataSource.searchArticles(
+      query: text.isEmpty ? _defaultQuery : text,
+      page: page,
+      pageSize: _pageSize,
+    );
+    final loaded = page * _pageSize;
+    return ArticlePage(
+      items: [for (final article in dto.results) article.toModel()],
+      hasMore: loaded < dto.total && loaded < _maxResults,
+    );
   }
 
   @override
-  Future<ArticleModel?> getArticle(String id) async {
-    await Future.delayed(_delay);
-    return mockArticles.where((article) => article.id == id).firstOrNull;
+  Future<ArticleModel> getArticle(String id) async {
+    final dto = await _dataSource.getArticle(id);
+    return dto.toModel();
   }
 
   @override
   Future<List<ArticleModel>> getRelated(ArticleModel article) async {
-    await Future.delayed(_delay);
-    return mockArticles
-        .where((other) => other.issn == article.issn && other.id != article.id)
-        .take(_relatedLimit)
-        .toList();
+    final queries = [
+      if (article.issn != null) 'issn:"${article.issn}"',
+      if (article.keywords.isNotEmpty)
+        'bibjson.keywords:"${_clean(article.keywords.first)}"',
+    ];
+    final pages = await Future.wait([
+      for (final query in queries)
+        _dataSource.searchArticles(
+          query: query,
+          page: 1,
+          pageSize: _relatedLimit + 1,
+        ),
+    ]);
+
+    final seen = {article.id};
+    final related = <ArticleModel>[];
+    for (final page in pages) {
+      for (final dto in page.results) {
+        if (seen.add(dto.id)) related.add(dto.toModel());
+      }
+    }
+    return related.take(_relatedLimit).toList();
   }
 
-  bool _matches(ArticleModel article, String text) {
-    return article.title.toLowerCase().contains(text) ||
-        article.authors.any((name) => name.toLowerCase().contains(text)) ||
-        article.keywords.any((word) => word.toLowerCase().contains(text));
+  String _clean(String text) {
+    return text
+        .replaceAll(RegExp(r'[^\p{L}\p{N}\s]', unicode: true), ' ')
+        .replaceAll(RegExp(r'\s+'), ' ')
+        .trim();
   }
 }
