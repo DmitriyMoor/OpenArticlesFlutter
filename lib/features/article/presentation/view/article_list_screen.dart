@@ -72,7 +72,6 @@ class _ArticleListState extends State<_ArticleList> {
 
   void _onScroll() {
     if (widget.state.loadMoreError != null) return;
-    // почти докрутили до конца — просим следующую страницу
     if (_controller.position.extentAfter < 300) {
       context.read<ArticleListCubit>().loadMore();
     }

@@ -60,7 +60,6 @@ class ArticleListCubit extends Cubit<ArticleListState> {
     emit(ArticleListLoading(query: query));
     try {
       final page = await _repository.getArticles(query: query);
-      // пока ждали ответ, могли ввести другой запрос
       if (isClosed || state.query != query) return;
       emit(
         ArticleListLoaded(

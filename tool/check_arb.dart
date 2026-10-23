@@ -1,8 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
 
-// запуск: dart run tool/check_arb.dart
-// сверяет ключи и плейсхолдеры в app_ru.arb и app_en.arb
 void main() {
   final ru = _read('lib/l10n/app_ru.arb');
   final en = _read('lib/l10n/app_en.arb');

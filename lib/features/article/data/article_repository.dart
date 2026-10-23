@@ -12,10 +12,8 @@ class ArticleRepository implements IArticleRepository {
   static const int _pageSize = 20;
   static const int _relatedLimit = 6;
 
-  // DOAJ отдаёт не больше 1000 результатов на один запрос
   static const int _maxResults = 1000;
 
-  // когда поиск пустой, показываем статьи по информатике
   static const String _defaultQuery =
       'bibjson.subject.term:"Electronic computers. Computer science"';
 
@@ -47,7 +45,6 @@ class ArticleRepository implements IArticleRepository {
       if (article.keywords.isNotEmpty)
         'bibjson.keywords:"${_clean(article.keywords.first)}"',
     ];
-    // оба запроса не зависят друг от друга, поэтому идут параллельно
     final pages = await Future.wait([
       for (final query in queries)
         _dataSource.searchArticles(

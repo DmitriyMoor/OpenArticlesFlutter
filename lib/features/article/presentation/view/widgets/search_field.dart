@@ -32,7 +32,6 @@ class _SearchFieldState extends State<SearchField> {
 
   void _clear() {
     _controller.clear();
-    // clear() сам onChanged не вызывает
     widget.onChanged('');
   }
 
