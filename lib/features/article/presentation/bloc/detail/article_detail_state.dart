@@ -1,3 +1,4 @@
+import 'package:open_articles_flutter/common/network/load_exception.dart';
 import 'package:open_articles_flutter/features/article/domain/article_model.dart';
 
 sealed class ArticleDetailState {
@@ -19,4 +20,11 @@ final class ArticleDetailNotFound extends ArticleDetailState {
   const ArticleDetailNotFound(this.id);
 
   final String id;
+}
+
+final class ArticleDetailFailure extends ArticleDetailState {
+  const ArticleDetailFailure(this.id, this.error);
+
+  final String id;
+  final LoadException error;
 }

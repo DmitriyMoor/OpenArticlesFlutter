@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:open_articles_flutter/common/widgets/app_scaffold.dart';
+import 'package:open_articles_flutter/common/widgets/load_error_view.dart';
 import 'package:open_articles_flutter/features/article/domain/article_model.dart';
 import 'package:open_articles_flutter/features/article/domain/i_article_repository.dart';
 import 'package:open_articles_flutter/features/article/presentation/bloc/detail/article_detail_bloc.dart';
@@ -31,6 +32,14 @@ class ArticleDetailScreen extends StatelessWidget {
             ),
             ArticleDetailNotFound() => Center(
               child: Text(AppLocalizations.of(context).articleNotFound),
+            ),
+            ArticleDetailFailure(:final id, :final error) => Center(
+              child: LoadErrorView(
+                error: error,
+                onRetry: () => context.read<ArticleDetailBloc>().add(
+                  ArticleDetailRetried(id),
+                ),
+              ),
             ),
             ArticleDetailLoaded(:final article, :final related) =>
               _ArticleContent(article: article, related: related),
@@ -97,7 +106,7 @@ class _ArticleContent extends StatelessWidget {
             ),
           ],
           if (related.isNotEmpty) ...[
-            SectionTitle(l10n.sectionMoreFromJournal),
+            SectionTitle(l10n.sectionRelated),
             for (final other in related) ArticleCard(article: other),
           ],
         ],
