@@ -1,0 +1,34 @@
+{
+  "@@locale": "en",
+  "appTitle": "Open Articles",
+  "actionToggleTheme": "Toggle theme",
+  "actionToggleLanguage": "Change language",
+  "languageButton": "RU",
+  "searchHint": "Search by title, author or topic",
+  "actionClearSearch": "Clear",
+  "searchNothingFound": "Nothing found",
+  "articleNotFound": "Article not found",
+  "pageNotFound": "Page not found",
+  "noAuthors": "No authors listed",
+  "authorsAndMore": "{authors} and {count} more",
+  "@authorsAndMore": {
+    "placeholders": {
+      "authors": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "noAbstract": "No abstract",
+  "sectionAbstract": "Abstract",
+  "sectionKeywords": "Keywords",
+  "sectionMoreFromJournal": "More from this journal",
+  "factJournal": "Journal",
+  "factPublisher": "Publisher",
+  "factPublished": "Published",
+  "factDoi": "DOI",
+  "factIssn": "ISSN",
+  "actionOpenFullText": "Read full text"
+}

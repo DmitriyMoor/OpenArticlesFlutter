@@ -1,0 +1,37 @@
+{
+  "@@locale": "ru",
+  "appTitle": "Открытые статьи",
+  "actionToggleTheme": "Сменить тему",
+  "actionToggleLanguage": "Сменить язык",
+  "languageButton": "EN",
+  "@languageButton": {
+    "description": "На кнопке написан язык, на который переключаемся"
+  },
+  "searchHint": "Поиск по названию, автору или теме",
+  "actionClearSearch": "Очистить",
+  "searchNothingFound": "Ничего не найдено",
+  "articleNotFound": "Статья не найдена",
+  "pageNotFound": "Такой страницы нет",
+  "noAuthors": "Авторы не указаны",
+  "authorsAndMore": "{authors} и ещё {count}",
+  "@authorsAndMore": {
+    "placeholders": {
+      "authors": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "noAbstract": "Аннотации нет",
+  "sectionAbstract": "Аннотация",
+  "sectionKeywords": "Ключевые слова",
+  "sectionMoreFromJournal": "Ещё из этого журнала",
+  "factJournal": "Журнал",
+  "factPublisher": "Издатель",
+  "factPublished": "Опубликована",
+  "factDoi": "DOI",
+  "factIssn": "ISSN",
+  "actionOpenFullText": "Читать полный текст"
+}

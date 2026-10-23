@@ -1,17 +1,34 @@
-# open_articles_flutter
+# Открытые статьи (Flutter)
 
-A new Flutter project.
+Каталог научных статей открытого доступа. Источник данных — [DOAJ](https://doaj.org) (Directory of Open Access Journals).
 
-## Getting Started
+Курс «Кроссплатформенная разработка», ПИН-252т.
 
-This project is a starting point for a Flutter application.
+## Запуск
 
-A few resources to get you started if this is your first Flutter project:
+```bash
+flutter pub get
+flutter run -d chrome
+flutter run -d windows
+```
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+Проверка, что ключи в ARB совпадают:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```bash
+dart run tool/check_arb.dart
+```
+
+## Структура
+
+```
+lib/
+  app.dart, main.dart
+  common/        навигация, тема, настройки (тема и язык), общие виджеты
+  features/
+    article/
+      data/          репозиторий
+      domain/        модель статьи, интерфейс репозитория
+      presentation/  bloc/, view/, view/widgets/, utils/
+  l10n/          подписи на русском и английском
+tool/check_arb.dart
+```
