@@ -24,7 +24,6 @@ class ArticleListCubit extends Cubit<ArticleListState> {
   Future<void> _load(String query) async {
     emit(ArticleListLoading(query: query));
     final items = await _repository.getArticles(query: query);
-    // пока ждали ответ, могли ввести другой запрос
     if (isClosed || state.query != query) return;
     emit(ArticleListLoaded(query: query, items: items));
   }

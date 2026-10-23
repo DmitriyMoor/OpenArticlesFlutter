@@ -3,7 +3,6 @@ import 'package:open_articles_flutter/features/article/domain/article_model.dart
 import 'package:open_articles_flutter/features/article/domain/i_article_repository.dart';
 
 class ArticleRepository implements IArticleRepository {
-  // задержка, чтобы было видно индикатор загрузки, как будто это сеть
   static const Duration _delay = Duration(milliseconds: 400);
   static const int _relatedLimit = 5;
 

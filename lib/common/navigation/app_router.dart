@@ -15,7 +15,6 @@ abstract final class AppRouter {
   static final GoRouter router = _create();
 
   static GoRouter _create() {
-    // без этого push не меняет адрес во вкладке браузера
     GoRouter.optionURLReflectsImperativeAPIs = true;
     return GoRouter(
       initialLocation: AppRoutes.list,
